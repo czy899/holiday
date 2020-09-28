@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-html='a' @click='fn'></h1>
+        <h1 v-html='a' @click.prevent='fn2'></h1>
+        <h1 v-html='a' @click='fn1(33,$event)'></h1>
+        <div class="father" @click='fn4'>
+            <h1 v-html='a' @click.prevent.stop='fn3'></h1>
+        </div>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                a: "<a href='https://www.baidu.com/'>我是一个a</a>"
+            },
+            methods: {
+                fn(e) {
+                    e.preventDefault()
+                },
+                fn1(num, e) {
+                    e.preventDefault()
+                    console.log(num)
+                },
+                fn2() {
+                    console.log('hahhah')
+                },
+                fn3() {
+                    alert('我是子盒子')
+                },
+                fn4() {
+                    alert('我是父盒子')
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

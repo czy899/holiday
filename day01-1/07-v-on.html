@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: darkseagreen;
+        }
+
+        button {
+            width: 200px;
+            height: 50px;
+            border-radius: 25px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button v-on:click='isShow=!isShow'>显示或隐藏</button>
+        <button @click='isShow1'>显示或隐藏</button>
+        <button @click='fn(1,2)'>点击时调用函数并传值</button>
+        <hr>
+        <div class="box" v-show="isShow">
+
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        /* 
+        
+        v-on:用于事件注册
+        v-on:事件名='要执行的代码'，适合特别简单的代码
+        v-on:事件名="methods中定义的函数"，不传参
+        v-on:事件名="methods中定义的函数(参数1，参数2...)"，传参
+        
+        @事件名='要执行的代码'
+        @事件名="methods中定义的函数"，不传参
+        @事件名="methods中定义的函数(参数1，参数2...)"，(参数1，参数2...)   传参
+        
+         */
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                isShow: true
+            },
+            methods: {
+                isShow1() {
+                    this.isShow = !this.isShow
+                },
+                fn(a, b) {
+                    console.log(a, b)
+                }
+            }
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

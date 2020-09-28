@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <img :src="src" :title='title' alt="">
+        <img :src="src" title="好厉害" alt="">
+        <img :src="src" alt="">
+    </div>
+    <script>
+        /* 
+        v-bind:访问data中的数据，动态设置html的标签属性
+        语法：
+            v-bind:属性名='值'---->:属性名='值'
+        
+        */
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                src: './00.gif',
+                title: '好屌呦'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='item in list'>{{item}} </li>
+        </ul>
+        <ul>
+            <li v-for='(item,index) in list'>{{index}}--{{item}} </li>
+        </ul>
+        <ul>
+            <!--  v-for='(value,prop) in 对象名'  prop：属性名-->
+            <li v-for='(value,prop) in obj'> {{value}}--{{prop}} </li>
+        </ul>
+        <ul>
+            <li v-for="item in list1" :key='item.id'> {{item.name}}--{{item.price}}--{{item.num}} </li>
+        </ul>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: ['貂蝉', '吕布', '小乔', '曹操'],
+                obj: {
+                    name: '大桥',
+                    age: 79,
+                    desc: '坚固'
+                },
+                list1: [
+                    { id: 1, name: '苹果', price: '1.8', num: '10斤' },
+                    { id: 2, name: '鸭梨', price: '5.8', num: '20斤' },
+                    { id: 3, name: '榴莲', price: '9.8', num: '50斤' },
+                    { id: 4, name: '西瓜', price: '11.8', num: '60斤' }
+                ]
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

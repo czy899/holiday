@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: darksalmon;
+            float: left;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        v-if/v-show:控制盒子的显示与隐藏
+
+        v-if='布尔值'   
+            1.true显示
+            2.false隐藏
+        实现原理：动态删除和创建元素
+
+        v-show='布尔值'   
+            1.true显示
+            2.false隐藏
+        实现原理：动态的控制css样式(display:none;)
+
+        使用场景：
+            1、如果需要频繁切换显示与隐藏，用v-show
+                用v-if频繁的创建和删除元素，比较消耗性能。
+            2、元素要么隐藏，要么显示，不太会切换，用v-if，初始渲染开销表较小
+                如果初始渲染为假：
+                        1、v-if是惰性的，就不会创建元素
+                        2、v-show还是会将元素渲染出来，然后控制display：none；
+
+        对于VIP用户：不用看到广告， 广告的显示隐藏, 推荐用 v-if
+
+     -->
+    <div id="app">
+        <div class="box" v-if='isShow'>
+            {{msg}}v-if
+        </div>
+        <div class="box" v-show='isShow'>
+            {{msg}}v-show
+        </div>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '我是内容',
+                isShow: true
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

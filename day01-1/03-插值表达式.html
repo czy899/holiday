@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 插值表达式：小胡子语法{{}}
+            作用：使用Data中的数据渲染视图
+            基本语法：支持三元运算符
+            注意：
+                
+                
+        -->
+        <h1>{{name}} </h1>
+        <!-- 1、使用的数据要在data中存在 -->
+        <h1>{{age>18?'成年':'未成年'}} </h1>
+
+        <!-- 2、能使用表达式，但是不能使用if for  会整个渲染失败-->
+        <!-- <h1>{{if(age>18?'成年':'未成年')}} </h1> -->
+        <h1>{{hobby}} </h1>
+
+        <!-- 3、不能再标签属性中使用    -->
+        <!-- <h1 title={{title}}>{{hobby}} </h1> -->
+
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'Lucy',
+                age: 15,
+                hobby: 'code',
+                title: 'lalal'
+            }
+        })
+
+    </script>
+</body>
+
+</html>
