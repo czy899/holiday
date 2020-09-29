@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        计算属性的优点：
+            1、便于维护，将模板中复杂的逻辑，封装到了计算属性中
+            2、计算属性有缓存处理，计算后，会把计算的结果缓存起来，如果再次获取同一个计算属性，那么就不要重复计算，直接读缓存结果即可
+            3、以来的值如果发生了变化，计算属性会重新自动计算，并再次缓存
+
+
+
+     -->
+    <div id="app">
+        <h1>{{revFn()}}</h1>
+        <h1>{{revFn()}}</h1>
+        <h1>{{revFn()}}</h1>
+        <h1>{{revFn()}}</h1>
+        <h1>{{revFn()}}</h1>
+        <h1>{{revFn()}}</h1>
+        <hr>
+        <h1>{{reverse}}</h1>
+        <h1>{{reverse}}</h1>
+        <h1>{{reverse}}</h1>
+        <h1>{{reverse}}</h1>
+        <h1>{{reverse}}</h1>
+        <h1>{{reverse}}</h1>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'lalalala'
+            },
+            methods: {
+                revFn() {
+                    console.log('函数执行了')
+                    return this.msg.split('').reverse().join('')
+                }
+            },
+            computed: {
+                reverse() {
+                    console.log('计算属性')
+                    return this.msg.split('').reverse().join('')
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>

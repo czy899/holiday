@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        定义指令： Vue.directive(指令名，{...})
+        使用指令：v-指令名
+
+
+
+     -->
+    <div id="app">
+        <input type="text" v-focus v-red>
+        <input type="text" v-focus1>
+    </div>
+    <script>
+        Vue.directive('focus', {
+            // 指令所在的元素，被插入页面中执行(页面中已经有这个元素了)
+            inserted(el) {
+                // el是指令所在的元素
+                el.focus()
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                val: '啦啦啦啦all'
+            },
+            directives: {
+                focus1: {
+                    inserted(el) {
+                        el.focus()
+                    }
+
+                },
+
+                red: {
+                    inserted(el) {
+                        // el.style.color = 'red'
+                        el.style.backgroundColor = 'red'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

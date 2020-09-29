@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 工作中，必然会遇到很多需要对字符串转换格式的场景，vue中专门提供了一个方法：过滤器
+        字符串（格式A）----过滤器----字符串（格式B）
+        我们要将字符串处理的过程，封装的哦一个过滤器中去
+
+
+        过滤器的基本使用：
+        1、定义过滤器
+            Vue.filter(过滤器名字，处理函数)
+            (1)处理函数的返回值，就是将来处理完成的成果
+            (2)处理函数的第一个参数，都是需要处理的字符串
+
+        2、使用过滤器：
+            {{msg | 过滤器名字}}
+
+
+
+     -->
+    <div id="app">
+        <h1>{{msg | add}} </h1>
+        <h1>{{msg | upper}} </h1>
+    </div>
+    <script>
+        Vue.filter('add', value => {
+            return value + '_demo'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello world'
+            },
+            methods: {},
+            filters: {
+                upper(value) {
+                    return value.toUpperCase()
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

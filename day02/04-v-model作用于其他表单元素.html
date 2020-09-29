@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <select name="" id="" v-model='val'>
+            <option value="1">苹果</option>
+            <option value="2">香蕉</option>
+            <option value="3">泥猴桃</option>
+            <option value="4">西瓜</option>
+        </select>
+        <hr>
+        <p>{{val1}}</p>
+        <textarea v-model='val1' name="" id="" cols="30" rows="10"></textarea>
+        <hr>
+        <p>{{value}}</p>
+        <input type="text" v-model='value'>
+    </div>
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                val: 3,
+                val1: '啦啦啦啦啦，翻一番是一个傻子',
+                value: '鹅鹅鹅去喜爱那个'
+            }
+        })
+
+
+
+    </script>
+</body>
+
+</html>

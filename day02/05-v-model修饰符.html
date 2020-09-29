@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        .trim 过滤掉首位空白字符
+        .number 把用户输入的值，用parseFloat转成数字类型，如果遇到转不了数字的，就会返回原值
+
+        表单元素如果设置了v-model就会忽略掉默认的value，checked等初始值
+        双向绑定可以非常方便的执行表单元素值的设置和获取
+     -->
+    <div id="app">
+        姓名: <input type="text" placeholder="昵称" v-model.trim='username' value='南岸'><br> <br>
+        密码: <input type="password" placeholder="密码" v-model.number='password'>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                username: 'lucy',
+                password: '123456'
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>
