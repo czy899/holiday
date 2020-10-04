@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .red {
+            color: red;
+        }
+
+        .search {
+            width: 200px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <input type="text" class="form-control search" placeholder='请输入关键字搜索' v-model='key' v-focus>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>资产名称</th>
+                        <th>价格</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in showList">
+                        <td>{{index+1}}</td>
+                        <td>{{item.name}} </td>
+                        <td :class='{red:item.price>100}'>{{item.price | money}}</td>
+                        <td><a href="javascript:;" @click='del(item.id)'>删除</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <td colspan="4">总资产：{{total | money}} </td>
+                </tfoot>
+            </table>
+
+            <!-- 添加资产 -->
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="资产名称" v-model='name' />
+                    </div>&nbsp;&nbsp;
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="资产价格" v-model='price' />
+                    </div>
+                </div>&nbsp;&nbsp;
+                <button class="btn btn-primary" @click.prevent='add'>添加资产</button>
+            </form>
+        </div>
+    </div>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+    <script src="./vue.js"></script>
+    <script>
+
+        // 过滤器
+        /*  Vue.filter('money', value => {
+             return '￥' + value.toFixed(2)
+         }) */
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                price: '',
+                list: [
+                    { id: 1, name: '外套', price: 99 },
+                    { id: 2, name: '裤子', price: 34 },
+                    { id: 3, name: '鞋', price: 25.4 },
+                    { id: 4, name: '头发', price: 199 }
+                ],
+                key: ''
+            },
+            methods: {
+                // 删除功能
+                del(id) {
+                    this.list = this.list.filter(item => item.id !== id)
+                },
+                // 添加功能
+                add() {
+                    if (this.name === '') return
+                    if (this.price === '' || this.price < 0) return
+                    this.list.push({
+                        id: +new Date(),
+                        name: this.name,
+                        price: +this.price
+                    })
+                    this.name = ''
+                    this.price = ''
+                },
+
+            },
+            filters: {
+                money(value) {
+                    return '¥ ' + value.toFixed(2)
+                }
+            },
+            directives: {
+                focus: {
+                    inserted(el) {
+                        el.focus()
+                    }
+                }
+            },
+            computed: {
+                /*  total() {
+                     let sum = 0
+                     this.list.forEach(item => {
+                         sum += item.price
+                     });
+                     return sum
+                 } */
+                total() {
+                    let sum = this.list.reduce((add, item) => add + item.price, 0)
+                    return sum
+                },
+                showList() {
+                    return this.list.filter(item => item.name.includes(this.key))
+                }
+            }
+
+        })
+
+
+
+    </script>
+</body>
+
+</html>

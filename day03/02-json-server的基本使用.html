@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        json-server的使用：
+            1、全局安装 
+                npm i json-server -g
+
+            2、准备一个json文件，提供(data.json)
+
+            3、利用命令。启动接口
+                json-server data.json
+
+            4、测试
+                get请求：http://localhost:3000/list，返回全局的列表数据  =》可以完成列表 渲染
+
+            restful规范是一个后台接口规范，通过请求的方式，区分操作类型
+                get：获取，查询
+                post：添加
+                delete：删除
+                put：全部修改，要改全都改，每个属性都要传，如果不传，那么不穿的那个属性就会被删除
+                patch：局部修改，可以只改一部分
+
+
+     -->
+    <div id="app"></div>
+    <script src="./vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: { z }
+        })
+    </script>
+</body>
+
+</html>
