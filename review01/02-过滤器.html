@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/moment/moment.js"></script>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 过滤器： 转换格式
+
+        filter(s)
+
+        Vue.filter('过滤器的名字'，处理函数)
+
+        filters:(       
+        '过滤器的名字':{
+            处理函数
+        } 
+        )
+
+        用法：{{msg | 过滤器名字}}
+
+
+     -->
+    <div id="app">
+        <h1>{{msg}} </h1>
+        <h1>{{msg | reverse}} </h1>
+        <h1>{{msg | reverse1}} </h1>
+        <h1>{{date1 | time}} </h1>
+        <h1>{{date1 | time1}} </h1>
+        <h1>{{date2 | time2('YYYY-MM-DD hh:mm:ss') }} </h1>
+        <h1>{{date2 | time3('MMMM Do YYYY, h:mm:ss a') }} </h1>
+    </div>
+    <script>
+        Vue.filter('reverse', value => {
+            return value.split('').reverse().join('')
+        })
+
+        Vue.filter('time', value => {
+            return moment(value).format('MMMM Do YYYY, h:mm:ss a')
+        })
+
+        Vue.filter('time2', (value, str) => {
+            return moment(value).format(str)
+        })
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue!!',
+                date1: 1601890727256,
+                date2: 1601890751312
+            },
+            methods: {},
+            filters: {
+                reverse1: value => {
+                    return value.split('').reverse().join('')
+                },
+                time1: value => {
+                    return moment(value).format('YYYY-MM-DD hh:mm:ss')
+                },
+                time3: (value, str) => moment(value).format(str)
+            }
+        });
+    </script>
+</body>
+
+</html>
