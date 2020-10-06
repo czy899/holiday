@@ -1,0 +1,22 @@
+{
+  "bookList": [
+    {
+      "id": 1,
+      "name": "当你学会独处",
+      "price": 29.9,
+      "picSrc": "http://img3m8.ddimg.cn/70/15/28522168-1_l_3.jpg"
+    },
+    {
+      "id": 3,
+      "name": "断舍离",
+      "price": 29.9,
+      "picSrc": "http://img3m3.ddimg.cn/68/20/23271503-1_l_10.jpg"
+    },
+    {
+      "id": 4,
+      "name": "王子与贫儿",
+      "price": 39.9,
+      "picSrc": "http://img3m0.ddimg.cn/67/20/28535530-1_l_3.jpg"
+    }
+  ]
+}
