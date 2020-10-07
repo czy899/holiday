@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{date1 | time1}} </h1>
+        <h1>{{date2 | time1}} </h1>
+    </div>
+    <script src="./node_modules/moment/moment.js"></script>
+    <script src="./vue.js"></script>
+    <script>
+        /*  Vue.filter('time1', (value) => {
+             return moment(value).format('YYYY-MM-DD HH:mm:ss')
+         }) */
+
+        Vue.filter('time1', function (value) {
+            return moment(value).format('YYYY-MM-DD HH:mm:ss')
+        })
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                date1: 1601348075835,
+                date2: 1201348075835
+            },
+            // methods: {},
+            /* filters: {
+                time(value) {
+                    return moment(value).format("dddd, MMMM Do YYYY, h:mm:ss a")
+                }
+            } */
+        });
+    </script>
+</body>
+
+</html>
